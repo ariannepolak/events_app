@@ -20,8 +20,8 @@ import AddEvent from '../components/AddEvent';
 
 
 export const loader = async () => {
-  const events = await fetch("http://localhost:3000/events");
-  const categories = await fetch("http://localhost:3000/categories");
+  const events = await fetch("https://my-json-server.typicode.com/ariannepolak/events_app/events");
+  const categories = await fetch("https://my-json-server.typicode.com/ariannepolak/events_app/categories");
   return { events: await events.json(), categories: await categories.json() };
 };
 
@@ -48,7 +48,7 @@ export const EventsPage = ( ) => {
 
     const handleAddEvent = async (newEvent) => {
       try {
-        const response = await fetch('http://localhost:3000/events', {
+        const response = await fetch('https://my-json-server.typicode.com/ariannepolak/events_app/events', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json',},
           body: JSON.stringify(newEvent),
