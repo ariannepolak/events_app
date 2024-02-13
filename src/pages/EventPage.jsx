@@ -21,9 +21,9 @@ import EditEvent from '../components/EditEvent';
 import DeleteEvent from '../components/DeleteEvent';
 
 export const loader = async ({params}) => {
-  const event = await fetch(`http://localhost:3000/events/${params.eventId}`);
-  const categories = await fetch ("http://localhost:3000/categories/")
-  const users = await fetch ("http://localhost:3000/users/")
+  const event = await fetch(`https://my-json-server.typicode.com/ariannepolak/events_app/events/${params.eventId}`);
+  const categories = await fetch ("https://my-json-server.typicode.com/ariannepolak/events_app/categories/")
+  const users = await fetch ("https://my-json-server.typicode.com/ariannepolak/events_app/users/")
   return { event: await event.json(), categories: await categories.json(), users: await users.json()};
 };
 
@@ -50,7 +50,7 @@ export const EventPage = () => {
   // EDIT EVENT
   const handleSave = async (editedEvent) => {
     try {
-      const response = await fetch(`http://localhost:3000/events/${editedEvent.id}`, {
+      const response = await fetch(`https://my-json-server.typicode.com/ariannepolak/events_app/events/${editedEvent.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -77,7 +77,7 @@ export const EventPage = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/events/${event.id}`, {
+      const response = await fetch(`https://my-json-server.typicode.com/ariannepolak/events_app/events/${event.id}`, {
         method: 'DELETE',
       });
       if (!response.ok) {
